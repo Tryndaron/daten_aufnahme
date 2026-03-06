@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { AutocompleteWidget } from "@ts4nfdi/terminology-service-suite";
+import dynamic from "next/dynamic";
 import { QueryClient, QueryClientProvider } from "react-query";
+
+const AutocompleteWidget = dynamic(
+  () => import("@ts4nfdi/terminology-service-suite").then((mod) => mod.AutocompleteWidget),
+  { ssr: false }
+);
 
 const queryClient = new QueryClient();
 
